@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio cá nhân sinh viên ngành Công nghệ Thông tin - Nơi giới thiệu bản thân, kỹ năng và các dự án tiêu biểu.">
+  <meta name="author" content="Nguyễn Văn A">
+  <title>Portfolio Sinh Viên | Nguyễn Văn A - Web Developer</title>
+</head>
+<body>
+
+  <!-- ==========================================================================
+    THẺ <header>:
+    - VAI TRÒ: Đại diện cho phần mở đầu trang (Banner / Masthead) hoặc phần dẫn nhập của một phần nội dung.
+      Thường chứa Logo, tên website, câu slogan thương hiệu và thanh điều hướng chính.
+    - TẠI SAO DÙNG <header> THAY VÌ <div>?:
+      + Về SEO: Công cụ tìm kiếm (Google, Bing) nhận diện đây là phần đầu trang chứa thông tin nhận diện cốt lõi của chủ sở hữu website.
+      + Về Accessibility (A11y): Trình đọc màn hình (Screen Reader) tự động gán vai trò ARIA ngầm định là landmark "banner",
+        giúp người khiếm thị nhanh chóng nhận diện tiêu đề và cấu trúc tổng thể của trang web.
+      + Thẻ <div> chỉ là khối chứa vô nghĩa (Generic Container), không cung cấp bất kỳ giá trị ngữ nghĩa nào cho robot thu thập dữ liệu hay công nghệ hỗ trợ tiếp cận.
+  ========================================================================== -->
+  <header>
+    <div>
+      <a href="#hero"><strong>NguyenVanA.Dev</strong></a>
+      <p>Sinh viên Kỹ thuật Phần mềm &amp; Front-end Enthusiast</p>
+    </div>
+
+    <!-- ========================================================================
+      THẺ <nav>:
+      - VAI TRÒ: Chứa cụm liên kết điều hướng quan trọng nhất (Navigation Links) của trang web hoặc ứng dụng.
+      - TẠI SAO DÙNG <nav> THAY VÌ <div>?:
+        + Về SEO: Giúp Googlebot nhanh chóng crawl (thu thập) và index (lập chỉ mục) các khu vực quan trọng trong website theo sơ đồ phân cấp.
+        + Về Accessibility: Gán landmark role là "navigation". Screen Reader cho phép người dùng nhảy trực tiếp (skip) vào menu
+          mà không cần lắng nghe toàn bộ các thành phần trang trước đó.
+        + Lưu ý: Không phải nhóm liên kết nào cũng dùng <nav>; chỉ dành riêng cho các khối điều hướng chính của trang.
+    ======================================================================== -->
+    <nav aria-label="Menu điều hướng chính">
+      <ul>
+        <li><a href="#hero">Trang chủ</a></li>
+        <li><a href="#gioi-thieu">Giới thiệu</a></li>
+        <li><a href="#du-an">Dự án</a></li>
+        <li><a href="#ky-nang">Kỹ năng</a></li>
+        <li><a href="#lien-he">Liên hệ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ==========================================================================
+    THẺ <main>:
+    - VAI TRÒ: Chứa nội dung trọng tâm, độc nhất và có giá trị nhất của tài liệu HTML hiện tại.
+    - TẠI SAO DÙNG <main> THAY VÌ <div>?:
+      + Về Tính duy nhất: Trong toàn bộ tài liệu HTML, chỉ được phép có duy nhất MỘT thẻ <main> trực tiếp hiển thị.
+      + Về SEO: Báo hiệu rõ ràng cho thuật toán tìm kiếm rằng toàn bộ nội dung giá trị cần xếp hạng nằm ở đây,
+        loại trừ các thành phần lặp lại giữa các trang như <header> và <footer>.
+      + Về Accessibility: Cung cấp landmark role "main", cho phép người khiếm thị kích hoạt phím tắt "Skip to content"
+        để nhảy thẳng vào nội dung chính mà không bị làm phiền bởi menu lặp đi lặp lại.
+  ========================================================================== -->
+  <main>
+
+    <!-- ========================================================================
+      THẺ <section> (SECTION 1: HERO & GIỚI THIỆU TỔNG QUAN):
+      - VAI TRÒ: Gom nhóm một phân đoạn nội dung độc lập theo một chủ đề cụ thể (Standalone Section),
+        và NÊN LUÔN LUÔN có một thẻ tiêu đề (h1-h6) tương ứng bên trong.
+      - TẠI SAO DÙNG <section> THAY VÌ <div>?:
+        + Về Cấu trúc tài liệu (Document Outline): Giúp trình duyệt và máy tìm kiếm tạo sơ đồ mục lục nội dung có ý nghĩa.
+        + Về SEO: Mỗi <section> tập trung vào một từ khóa chủ đề (VD: Hero Banner, Danh mục dự án, Kỹ năng, Liên hệ).
+        + Thẻ <div> chỉ nên dùng khi bạn cần một wrapper để căn chỉnh CSS (Flexbox, Grid, background, padding) thuần túy.
+    ======================================================================== -->
+    <section id="hero" aria-labelledby="hero-title">
+      <!-- figure & figcaption: Khối ngữ nghĩa chứa tài liệu minh họa kèm chú thích ảnh chuẩn SEO -->
+      <figure>
+        <img src="https://placehold.co/280x280/png?text=Avatar+Sinh+Vien" 
+             alt="Ảnh chân dung đại diện sinh viên Nguyễn Văn A" 
+             width="280" 
+             height="280">
+        <figcaption>Nguyễn Văn A - Sinh viên năm 3 ngành CNTT</figcaption>
+      </figure>
+
+      <div>
+        <h1 id="hero-title">Xin chào, tôi là <mark>Nguyễn Văn A</mark></h1>
+        <p>
+          Một lập trình viên trẻ đam mê xây dựng giao diện web chuẩn Accessibility,
+          tối ưu trải nghiệm người dùng (UX) và thực hành phong cách <em>Vibe Coding</em> hiện đại.
+        </p>
+        
+        <!-- Nút CTA (Call-to-Action) dẫn người xem tới hành động quan trọng nhất -->
+        <p>
+          <a href="#du-an">Xem dự án của tôi</a>
+          <a href="#lien-he">Liên hệ hợp tác</a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ========================================================================
+      THẺ <aside> (THÔNG TIN PHỤ TRỢ / SIDEBAR):
+      - VAI TRÒ: Chứa các thông tin bổ trợ, mở rộng hoặc liên quan gián tiếp đến nội dung chính xung quanh nó.
+      - TẠI SAO DÙNG <aside> THAY VÌ <div>?:
+        + Về Accessibility: Mang landmark role "complementary". Người dùng công nghệ hỗ trợ hiểu rằng nội dung này
+          là phần thông tin đọc thêm, có thể bỏ qua mà không làm gián đoạn mạch đọc nội dung trọng tâm.
+        + Về SEO: Công cụ tìm kiếm hiểu được đâu là nội dung cốt lõi và đâu là thông tin phụ biên (Highlights, Quick Stats).
+    ======================================================================== -->
+    <aside id="ky-nang" aria-labelledby="skills-heading">
+      <h2 id="skills-heading">Điểm nổi bật nhanh (Quick Highlights)</h2>
+      <ul>
+        <li><strong>Ngành học:</strong> Công nghệ Thông tin - Đại học Quốc Gia</li>
+        <li><strong>Điểm trung bình (GPA):</strong> 3.6 / 4.0</li>
+        <li><strong>Kỹ năng cốt lõi:</strong> HTML5 Semantic, CSS3 Modern, JavaScript ES6+, Git</li>
+        <li><strong>Trạng thái:</strong> Đang tìm kiếm cơ hội thực tập Web Developer</li>
+      </ul>
+    </aside>
+
+    <!-- ========================================================================
+      THẺ <section> (SECTION 2: DANH SÁCH CÁC DỰ ÁN TIÊU BIỂU):
+      - VAI TRÒ: Phân đoạn hiển thị các sản phẩm, dự án thực tế sinh viên đã thực hiện.
+    ======================================================================== -->
+    <section id="du-an" aria-labelledby="projects-title">
+      <header>
+        <h2 id="projects-title">Dự án tiêu biểu</h2>
+        <p>Các dự án học tập và thực tế được triển khai với tư duy code sạch và chuẩn Semantic.</p>
+      </header>
+
+      <!-- Danh sách dự án: Sử dụng <article> cho từng thẻ Card dự án -->
+      <div>
+
+        <!-- ====================================================================
+          THẺ <article> (DỰ ÁN 1):
+          - VAI TRÒ: Đại diện cho một khối nội dung độc lập, tự trọn vẹn (self-contained),
+            có thể tách rời để đăng tải hoặc phân phối lại ở bất cứ đâu (RSS feed, widget, mạng xã hội) mà vẫn dễ hiểu.
+          - TẠI SAO DÙNG <article> THAY VÌ <div>?:
+            + Về SEO: Google phân tích <article> như một thực thể nội dung riêng lẻ có đầy đủ tiêu đề, mô tả, hình ảnh.
+              Rất thích hợp cho các bài viết, sản phẩm, thẻ card portfolio, đánh giá review.
+            + Về Accessibility: Hỗ trợ người dùng khiếm thị duyệt qua từng đơn vị mục nội dung một cách rành mạch.
+        ==================================================================== -->
+        <article>
+          <figure>
+            <img src="https://placehold.co/400x250/png?text=Du+An+Web+Portfolio" 
+                 alt="Giao diện website Portfolio cá nhân sinh viên trên máy tính và điện thoại" 
+                 width="400" 
+                 height="250">
+            <figcaption>Dự án 01: Student Portfolio Website</figcaption>
+          </figure>
+
+          <h3>Trang Web Portfolio Cá Nhân</h3>
+          <p>
+            Xây dựng trang web giới thiệu năng lực bản thân bằng HTML5 Semantic chuẩn SEO,
+            tối ưu khả năng tiếp cận (Accessibility) và tương thích đa thiết bị (Responsive).
+          </p>
+          
+          <!-- Thẻ <time> cung cấp dữ liệu thời gian có cấu trúc chuẩn cho máy đọc -->
+          <p>
+            <small>Thời gian thực hiện: <time datetime="2026-03">Tháng 03/2026</time></small>
+          </p>
+
+          <ul>
+            <li>Công nghệ: HTML5, CSS3 Grid/Flexbox, JavaScript</li>
+            <li>Vai trò: Lập trình viên độc lập (Sole Developer)</li>
+          </ul>
+
+          <p>
+            <a href="https://github.com/example/student-portfolio" target="_blank" rel="noopener noreferrer">Xem mã nguồn (GitHub)</a> | 
+            <a href="https://example.com/demo-portfolio" target="_blank" rel="noopener noreferrer">Trải nghiệm trực tiếp (Live Demo)</a>
+          </p>
+        </article>
+
+        <!-- ====================================================================
+          THẺ <article> (DỰ ÁN 2)
+        ==================================================================== -->
+        <article>
+          <figure>
+            <img src="https://placehold.co/400x250/png?text=Du+An+Task+Manager" 
+                 alt="Giao diện ứng dụng quản lý công việc học tập sinh viên" 
+                 width="400" 
+                 height="250">
+            <figcaption>Dự án 02: Ứng dụng Quản lý Nhiệm vụ Học tập</figcaption>
+          </figure>
+
+          <h3>Student Task Manager Web App</h3>
+          <p>
+            Ứng dụng hỗ trợ sinh viên quản lý tiến độ bài tập, đồ án theo phương pháp Kanban,
+            lưu trữ dữ liệu cục bộ bằng Web Storage API.
+          </p>
+
+          <p>
+            <small>Thời gian thực hiện: <time datetime="2026-01">Tháng 01/2026</time></small>
+          </p>
+
+          <ul>
+            <li>Công nghệ: HTML5 LocalStorage, Modern JavaScript, CSS Animations</li>
+            <li>Vai trò: Front-end Developer</li>
+          </ul>
+
+          <p>
+            <a href="https://github.com/example/student-task-manager" target="_blank" rel="noopener noreferrer">Xem mã nguồn (GitHub)</a> | 
+            <a href="https://example.com/demo-tasks" target="_blank" rel="noopener noreferrer">Trải nghiệm trực tiếp (Live Demo)</a>
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================================================
+      THẺ <section> (SECTION 3: LIÊN HỆ & GỬI PHẢN HỒI):
+      - VAI TRÒ: Khu vực tiếp nhận thông điệp, cơ hội việc làm hoặc lời mời hợp tác từ nhà tuyển dụng.
+    ======================================================================== -->
+    <section id="lien-he" aria-labelledby="contact-title">
+      <h2 id="contact-title">Liên hệ với tôi</h2>
+      <p>Bạn có cơ hội thực tập, dự án tiềm năng hoặc chỉ muốn giao lưu học hỏi? Hãy để lại tin nhắn!</p>
+
+      <!-- 
+        FORM SEMANTIC:
+        - Sử dụng <label for="..."> tương ứng với <input id="..."> để khi click vào chữ, con trỏ tự động nhảy vào ô nhập liệu.
+        - Giúp Screen Reader phát âm chính xác nhãn trường dữ liệu mà người dùng đang nhập.
+      -->
+      <form action="#" method="post">
+        <div>
+          <label for="fullname">Họ và tên của bạn: <span aria-hidden="true">*</span></label><br>
+          <input type="text" id="fullname" name="fullname" placeholder="VD: Trần Văn B" required autocomplete="name">
+        </div>
+
+        <div>
+          <label for="email">Địa chỉ Email: <span aria-hidden="true">*</span></label><br>
+          <input type="email" id="email" name="email" placeholder="VD: ban@domain.com" required autocomplete="email">
+        </div>
+
+        <div>
+          <label for="subject">Chủ đề liên hệ:</label><br>
+          <input type="text" id="subject" name="subject" placeholder="VD: Trao đổi cơ hội thực tập Front-end">
+        </div>
+
+        <div>
+          <label for="message">Nội dung tin nhắn: <span aria-hidden="true">*</span></label><br>
+          <textarea id="message" name="message" rows="5" cols="40" placeholder="Viết tin nhắn của bạn tại đây..." required></textarea>
+        </div>
+
+        <div>
+          <button type="submit">Gửi tin nhắn</button>
+          <button type="reset">Nhập lại</button>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+    THẺ <footer>:
+    - VAI TRÒ: Đại diện cho phần chân trang của tài liệu hoặc phần kết của một section.
+      Thường chứa thông tin bản quyền (Copyright), chính sách bảo mật, liên hệ và liên kết mạng xã hội.
+    - TẠI SAO DÙNG <footer> THAY VÌ <div>?:
+      + Về SEO: Giúp bot tìm kiếm thu thập thông tin pháp lý, độ tin cậy của tác giả (E-E-A-T) và mạng lưới liên kết xã hội chính thống.
+      + Về Accessibility: Mang landmark role "contentinfo", cung cấp cho người khiếm thị một lối tắt tiêu chuẩn
+        để tìm thông tin bản quyền hoặc cách thức liên hệ tác giả ở cuối trang.
+  ========================================================================== -->
+  <footer>
+    <!-- Thẻ <address>: Dùng riêng cho thông tin liên hệ của tác giả/chủ sở hữu trang -->
+    <address>
+      <p>Thông tin trực tiếp: <a href="mailto:nguyenvana@example.edu.vn">nguyenvana@example.edu.vn</a> | SĐT: <a href="tel:+84123456789">0123 456 789</a></p>
+      <p>Địa chỉ: Quận Ninh Kiều, TP. Cần Thơ, Việt Nam</p>
+    </address>
+
+    <!-- Danh sách liên kết Mạng xã hội -->
+    <nav aria-label="Liên kết mạng xã hội">
+      <p>Kết nối với tôi:</p>
+      <ul>
+        <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+        <li><a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+      </ul>
+    </nav>
+
+    <!-- Bản quyền trang web -->
+    <p><small>&copy; 2026 Nguyễn Văn A. Giữ toàn bộ bản quyền (All Rights Reserved). Được thiết kế theo chuẩn HTML5 Semantic.</small></p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài Tập Tuần 5 - CSS Animations & Effects</title>
+    <style>
+      :root {
+        --bg-color: #0f172a;
+        --card-bg: #1e293b;
+        --primary: #38bdf8;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-color);
+        color: var(--text-main);
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(15, 23, 42, 0.9);
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        z-index: 1000;
+        border-bottom: 1px solid #334155;
+      }
+
+      /* BÀI 3: TYPING EFFECT TRÊN HEADER */
+      .typing-container {
+        font-family: monospace;
+        font-size: 1.2rem;
+        color: var(--primary);
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid var(--primary);
+        width: 22ch;
+        animation:
+          typing 3.5s steps(22) infinite alternate,
+          blink 0.75s step-end infinite;
+      }
+
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 22ch;
+        }
+      }
+
+      @keyframes blink {
+        from,
+        to {
+          border-color: transparent;
+        }
+        50% {
+          border-color: var(--primary);
+        }
+      }
+
+      /* BÀI 5: MODERN HAMBURGER MENU */
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .hamburger span {
+        width: 30px;
+        height: 3px;
+        background-color: var(--text-main);
+        transition:
+          transform 0.4s ease,
+          opacity 0.4s ease;
+      }
+
+      .hamburger.open span:nth-child(1) {
+        transform: translateY(9px) rotate(45deg);
+      }
+
+      .hamburger.open span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.open span:nth-child(3) {
+        transform: translateY(-9px) rotate(-45deg);
+      }
+
+      .section {
+        padding: 100px 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      h2 {
+        margin-bottom: 40px;
+        color: var(--primary);
+        font-size: 2rem;
+      }
+
+      /* BÀI 4: PARALLAX BACKGROUND */
+      .parallax-section {
+        background-image: url("https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .parallax-overlay {
+        background: rgba(0, 0, 0, 0.6);
+        padding: 30px;
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+      }
+
+      /* BÀI 2: CARD FLIP EFFECT */
+      .cards-grid {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      .flip-card {
+        background-color: transparent;
+        width: 280px;
+        height: 380px;
+        perspective: 1000px;
+      }
+
+      .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-style: preserve-3d;
+      }
+
+      .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+      }
+
+      .flip-card-front,
+      .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      }
+
+      .flip-card-front {
+        background-color: var(--card-bg);
+        color: var(--text-main);
+      }
+
+      .flip-card-front img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+        border: 2px solid var(--primary);
+      }
+
+      .flip-card-back {
+        background-color: var(--primary);
+        color: #0f172a;
+        transform: rotateY(180deg);
+        font-weight: 600;
+      }
+
+      /* BÀI 6: SKILL BAR ANIMATION */
+      .skills-container {
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 12px;
+        max-width: 600px;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      .skill-box {
+        margin-bottom: 20px;
+      }
+
+      .skill-title {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+
+      .skill-bar-bg {
+        width: 100%;
+        height: 12px;
+        background: #334155;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .skill-bar-fill {
+        height: 100%;
+        background: var(--primary);
+        width: 0;
+        border-radius: 6px;
+        animation: fillBar 2s cubic-bezier(0.1, 0.9, 0.2, 1) forwards;
+      }
+
+      @keyframes fillBar {
+        to {
+          width: var(--target-width);
+        }
+      }
+
+      /* BÀI 1: FLOATING ACTION BUTTON (FAB) */
+      .fab {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #2563eb;
+        color: white;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+        cursor: pointer;
+        z-index: 999;
+        animation: pulseFab 2s infinite;
+        border: none;
+        transition: transform 0.3s;
+      }
+
+      .fab:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes pulseFab {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.6);
+        }
+        70% {
+          transform: scale(1.05);
+          box-shadow: 0 0 0 15px rgba(37, 99, 235, 0);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER & BÀI 3, BÀI 5 -->
+    <header>
+      <div class="typing-container">Xin chào, tôi là Developer!</div>
+      <div class="hamburger" id="hamburgerBtn" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <!-- BÀI 4: PARALLAX SECTION -->
+    <div class="parallax-section" style="margin-top: 80px">
+      <div class="parallax-overlay">
+        <h2>Bài 4: Parallax Background</h2>
+        <p>Cuộn trang để trải nghiệm hiệu ứng chiều sâu 3D mượt mà.</p>
+      </div>
+    </div>
+
+    <!-- BÀI 2: CARD FLIP SECTION -->
+    <section class="section">
+      <h2>Bài 2: Card Flip Effect (Thẻ Lật Mặt)</h2>
+      <div class="cards-grid">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <img
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=300&q=80"
+                alt="Avatar"
+              />
+              <h3>Nguyễn Văn A</h3>
+              <p style="color: var(--text-muted)">UI/UX Designer</p>
+            </div>
+            <div class="flip-card-back">
+              <h3>Kết Nối</h3>
+              <p>GitHub: github.com/username</p>
+              <p>Facebook: fb.com/username</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BÀI 6: SKILL BAR ANIMATION SECTION -->
+    <section class="section">
+      <h2>Bài 6: Skill Bar Animation</h2>
+      <div class="skills-container">
+        <div class="skill-box">
+          <div class="skill-title"><span>HTML5</span><span>90%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" style="--target-width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill-box">
+          <div class="skill-title">
+            <span>CSS3 / Animations</span><span>85%</span>
+          </div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" style="--target-width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill-box">
+          <div class="skill-title"><span>JavaScript</span><span>75%</span></div>
+          <div class="skill-bar-bg">
+            <div class="skill-bar-fill" style="--target-width: 75%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BÀI 1: FLOATING ACTION BUTTON (FAB) -->
+    <button class="fab" title="Liên hệ Zalo/Messenger">💬</button>
+
+    <script>
+      // Xử lý Hamburger Menu (Bài 5)
+      function toggleMenu() {
+        document.getElementById("hamburgerBtn").classList.toggle("open");
+      }
+    </script>
+  </body>
+</html>

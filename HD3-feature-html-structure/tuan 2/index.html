@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Trang web portfolio cá nhân và dự án nhóm được xây dựng hoàn toàn bằng chuẩn Semantic HTML5 hiện đại tối ưu SEO."
+    />
+    <title>Portfolio Cá Nhân - Tuần 2 Semantic HTML</title>
+  </head>
+  <body>
+    <!-- 1. Thẻ <header> và <nav> cho phần đầu trang -->
+    <header>
+      <div class="logo">MyPortfolio</div>
+      <nav>
+        <ul>
+          <li><a href="#home">Trang chủ</a></li>
+          <li><a href="#about">Giới thiệu</a></li>
+          <li><a href="#projects">Dự án</a></li>
+          <li><a href="#contact">Liên hệ</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- 2. Thẻ <main> chứa nội dung độc nhất của trang -->
+    <main>
+      <!-- 3. Thẻ <section> phân chia các phần nội dung -->
+      <section id="home">
+        <h1>Chào mừng đến với không gian số của tôi</h1>
+        <p>
+          Học phần Thiết Kế Web - Xây dựng website chuẩn SEO và thân thiện với
+          người dùng[cite: 22].
+        </p>
+      </section>
+
+      <section id="about">
+        <h2>Giới thiệu bản thân</h2>
+        <!-- 4. Thẻ <article> cho nội dung độc lập, tự có ý nghĩa -->
+        <article>
+          <h3>Lập trình viên Front-End tương lai</h3>
+          <p>
+            Đam mê việc viết mã sạch (Clean Code), sử dụng đúng các thẻ ngữ
+            nghĩa thay vì lạm dụng thẻ div[cite: 22].
+          </p>
+          <!-- 5. Thẻ <time> cho thời gian máy tính đọc được -->
+          <p>
+            Bài viết được cập nhật lúc:
+            <time datetime="2026-03-30">30 tháng 3, 2026</time>
+          </p>
+        </article>
+      </section>
+
+      <section id="projects">
+        <h2>Dự án tiêu biểu</h2>
+        <article>
+          <h3>Landing Page Cao Cấp</h3>
+          <!-- 6. Thẻ <figure> và <figcaption> cho hình ảnh minh họa -->
+          <figure>
+            <img
+              src="project-preview.jpg"
+              alt="Ảnh minh họa dự án"
+              loading="lazy"
+            />
+            <figcaption>
+              Hình 1: Giao diện trang chủ dự án Landing Page.
+            </figcaption>
+          </figure>
+        </article>
+      </section>
+
+      <!-- 7. Thẻ <aside> cho nội dung bên lề (Sidebar) -->
+      <aside>
+        <h3>Tin tức nhanh</h3>
+        <p>Đang chuẩn bị cho kỳ kiểm tra giữa kỳ vào Tuần 7.</p>
+      </aside>
+    </main>
+
+    <!-- 8. Thẻ <footer> cho chân trang -->
+    <footer>
+      <p>
+        &copy; 2026 Bản quyền thuộc về Nhóm phát triển Web. Bảo lưu mọi quyền.
+      </p>
+    </footer>
+  </body>
+</html>

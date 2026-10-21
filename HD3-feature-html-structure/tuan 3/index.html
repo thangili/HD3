@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bài Tập Tuần 3 - CSS Layout System</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="grid-layout">
+      <!-- Header đặt ở trên cùng -->
+      <header class="header">
+        <h2>Portfolio Cá Nhân - Header</h2>
+      </header>
+
+      <!-- Sidebar bên trái (chiếm 25%) -->
+      <aside class="sidebar">
+        <h3>Menu Điều Hướng</h3>
+        <ul>
+          <li><a href="#">Trang chủ</a></li>
+          <li><a href="#">Giới thiệu</a></li>
+          <li><a href="#">Kỹ năng</a></li>
+          <li><a href="#">Liên hệ</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main Content chiếm phần còn lại -->
+      <main class="main-content">
+        <h1>Hệ Thống Lưới CSS Grid & Flexbox</h1>
+        <p>
+          Trang web này được xây dựng dựa trên yêu cầu thực hành Tuần 3, kết hợp
+          CSS Grid để phân chia bố cục lớn và Flexbox cho các thành phần con.
+        </p>
+
+        <div class="skills-section">
+          <h3>Kỹ năng của tôi (Sử dụng Flexbox)</h3>
+          <div class="skills-container">
+            <span class="skill-item">HTML5 / Semantic</span>
+            <span class="skill-item">CSS3 / Box Model</span>
+            <span class="skill-item">Flexbox Layout</span>
+            <span class="skill-item">CSS Grid System</span>
+            <span class="skill-item">JavaScript Basic</span>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer ở dưới cùng -->
+      <footer class="footer">
+        <p>&copy; 2026 Thiết Kế Web - Lạc Hồng</p>
+      </footer>
+    </div>
+  </body>
+</html>

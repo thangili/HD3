@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VinFast - Thương Hiệu Xe Điện Cao Cấp</title>
+    
+    <!-- 1. Typography: Google Fonts (Playfair Display cho Tiêu đề, Montserrat cho Nội dung) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ==================== 1. BRANDING & GLOBAL STYLES ==================== */
+        :root {
+            --bg-dark: #0f0f0f;
+            --bg-card: #1a1a1a;
+            --primary-gold: #d4af37;
+            --gold-hover: #f3e5ab;
+            --text-light: #f5f5f5;
+            --text-gray: #a0a0a0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* ==================== HEADER & STICKY MENU ==================== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        header.scrolled {
+            background-color: rgba(15, 15, 15, 0.95);
+            padding: 12px 50px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-gold);
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: 1px solid var(--primary-gold);
+            color: var(--primary-gold);
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            background: var(--primary-gold);
+            color: #000;
+        }
+
+        /* Mobile Hamburger */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--primary-gold);
+        }
+
+        /* ==================== HERO SECTION (VIDEO BACKGROUND) ==================== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -2;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+            color: #ddd;
+        }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(45deg, var(--primary-gold), #f3e5ab);
+            color: #000;
+            font-weight: 600;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+        }
+
+        /* ==================== SCROLL REVEAL ANIMATION ==================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 50px;
+        }
+
+        /* ==================== INTERACTIVE GALLERY (SHOWROOM) ==================== */
+        .gallery-container {
+            text-align: center;
+        }
+
+        .car-display img {
+            width: 100%;
+            max-width: 750px;
+            border-radius: 10px;
+            transition: opacity 0.5s ease;
+        }
+
+        .color-picker {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .color-dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .color-dot.active, .color-dot:hover {
+            border-color: var(--primary-gold);
+            transform: scale(1.15);
+        }
+
+        .dot-red { background-color: #a80000; }
+        .dot-black { background-color: #111; border: 1px solid #444; }
+        .dot-white { background-color: #fff; }
+
+        /* ==================== TABS (SPECS) ==================== */
+        .tabs-container {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 30px;
+            border: 1px solid #222;
+        }
+
+        .tab-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 15px;
+        }
+
+        .tab-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .tab-btn.active {
+            color: var(--primary-gold);
+            border-bottom: 2px solid var(--primary-gold);
+            font-weight: 600;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .spec-item {
+            background: #111;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 3px solid var(--primary-gold);
+        }
+
+        /* ==================== FOOTER & STICKY CHAT ZALO ==================== */
+        footer {
+            background: #050505;
+            padding: 60px 50px 20px;
+            border-top: 1px solid #222;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-gold);
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+            color: var(--text-gray);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            border-top: 1px solid #111;
+            padding-top: 20px;
+        }
+
+        /* Zalo Sticky Button */
+        .zalo-sticky {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #0068ff;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 104, 255, 0.4);
+            z-index: 999;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            20% { transform: rotate(-10deg); }
+            40% { transform: rotate(10deg); }
+            60% { transform: rotate(-10deg); }
+            80% { transform: rotate(10deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .zalo-sticky.shake {
+            animation: shake 0.5s ease;
+        }
+
+        /* ==================== POPUP MODAL (10% DISCOUNT) ==================== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            border: 1px solid var(--primary-gold);
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            max-width: 450px;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            color: var(--text-gray);
+            cursor: pointer;
+        }
+
+        .modal h3 {
+            color: var(--primary-gold);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        /* ==================== RESPONSIVE DESIGN ==================== */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 40px 20px;
+                transition: var(--transition);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- STICKY HEADER -->
+    <header id="header">
+        <div class="logo">VINFAST LUX</div>
+        <nav>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" data-i18n="nav_about">Giới thiệu</a></li>
+                <li><a href="#showroom" data-i18n="nav_showroom">Showroom</a></li>
+                <li><a href="#specs" data-i18n="nav_specs">Thông số</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="lang-btn" id="langBtn" onclick="toggleLanguage()">EN</button>
+            <div class="hamburger" onclick="toggleMenu()">
+                <div></div><div></div><div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (VIDEO BACKGROUND) -->
+    <section class="hero">
+        <video class="hero-video" autoplay loop muted playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-car-in-a-neon-lit-city-43223-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">Tương Lai Di Chuyển Thượng Lưu</h1>
+            <p data-i18n="hero_desc">Trải nghiệm đỉnh cao công nghệ xe điện thông minh cùng thiết kế sang trọng bậc nhất từ VinFast.</p>
+            <button class="btn-gold" data-i18n="hero_btn">Khám phá ngay</button>
+        </div>
+    </section>
+
+    <!-- SECTION 1: ABOUT (SCROLL REVEAL) -->
+    <section id="about" class="section reveal">
+        <h2 class="section-title" data-i18n="about_title">Công Nghệ Xanh Tương Lai</h2>
+        <div style="text-align: center; max-width: 800px; margin: 0 auto; color: var(--text-gray);">
+            <p data-i18n="about_desc">VinFast tiên phong ứng dụng công nghệ pin xanh hiện đại, mang lại phạm vi di chuyển vượt trội và khả năng tự lái thông minh. Từng chi tiết được chế tác tỉ mỉ nhằm đem đến trải nghiệm sang trọng và an toàn tuyệt đối.</p>
+        </div>
+    </section>
+
+    <!-- SECTION 2: SHOWROOM (INTERACTIVE GALLERY) -->
+    <section id="showroom" class="section reveal">
+        <h2 class="section-title" data-i18n="showroom_title">Bộ Sưu Tập Màu Sắc</h2>
+        <div class="gallery-container">
+            <div class="car-display">
+                <!-- Lazy loading tối ưu tốc độ -->
+                <img id="carImage" src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80" alt="VinFast Car" loading="lazy">
+            </div>
+            <div class="color-picker">
+                <div class="color-dot dot-red active" onclick="changeColor('red', 'https://images.unsplash.com/photo-1617788138017-80ad40651399?w=800&q=80')"></div>
+                <div class="color-dot dot-black" onclick="changeColor('black', 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80')"></div>
+                <div class="color-dot dot-white" onclick="changeColor('white', 'https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=800&q=80')"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: SPECS (TABS ACCORDION) -->
+    <section id="specs" class="section reveal">
+        <h2 class="section-title" data-i18n="specs_title">Thông Số Kỹ Thuật</h2>
+        <div class="tabs-container">
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab('std')" data-i18n="tab_std">Tiêu Chuẩn</button>
+                <button class="tab-btn" onclick="switchTab('adv')" data-i18n="tab_adv">Nâng Cao</button>
+                <button class="tab-btn" onclick="switchTab('lux')" data-i18n="tab_lux">Cao Cấp (Luxury)</button>
+            </div>
+            <div id="tab-std" class="tab-content active">
+                <div class="specs-grid">
+                    <div class="spec-item"><strong data-i18n="spec_range">Quãng đường:</strong> 420 km / lần sạc</div>
+                    <div class="spec-item"><strong data-i18n="spec_accel">Tăng tốc (0-100km/h):</strong> 6.5 giây</div>
+                    <div class="spec-item"><strong data-i18n="spec_power">Công suất:</strong> 201 mã lực</div>
+                </div>
+            </div>
+            <div id="tab-adv" class="tab-content">
+                <div class="specs-grid">
+                    <div class="spec-item"><strong data-i18n="spec_range">Quãng đường:</strong> 500 km / lần sạc</div>
+                    <div class="spec-item"><strong data-i18n="spec_accel">Tăng tốc (0-100km/h):</strong> 5.2 giây</div>
+                    <div class="spec-item"><strong data-i18n="spec_power">Công suất:</strong> 300 mã lực</div>
+                </div>
+            </div>
+            <div id="tab-lux" class="tab-content">
+                <div class="specs-grid">
+                    <div class="spec-item"><strong data-i18n="spec_range">Quãng đường:</strong> 620 km / lần sạc</div>
+                    <div class="spec-item"><strong data-i18n="spec_accel">Tăng tốc (0-100km/h):</strong> 3.8 giây</div>
+                    <div class="spec-item"><strong data-i18n="spec_power">Công suất:</strong> 402 mã lực</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>VinFast Auto</h4>
+                <p style="color: var(--text-gray)" data-i18n="footer_about">Thương hiệu xe điện cao cấp, tiên phong dẫn dắt làn sóng di chuyển xanh toàn cầu.</p>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_links">Liên Kết Nhanh</h4>
+                <ul>
+                    <li><a href="#about" data-i18n="nav_about">Giới thiệu</a></li>
+                    <li><a href="#showroom" data-i18n="nav_showroom">Showroom</a></li>
+                    <li><a href="#specs" data-i18n="nav_specs">Thông số</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4 data-i18n="footer_social">Mạng Xã Hội</h4>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 VinFast. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- STICKY CHAT ZALO -->
+    <div class="zalo-sticky" id="zaloBtn">
+        💬 Chat Zalo
+    </div>
+
+    <!-- PROMO MODAL POPUP -->
+    <div class="modal" id="promoModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h3 data-i18n="modal_title">ƯU ĐÃI ĐẶC BIỆT!</h3>
+            <p data-i18n="modal_desc" style="margin: 15px 0; color: #ccc;">Nhận ngay voucher giảm giá <strong>10%</strong> cho gói đăng ký lái thử hôm nay.</p>
+            <button class="btn-gold" onclick="closeModal()" data-i18n="modal_btn">Nhận Mã Khuyến Mãi</button>
+        </div>
+    </div>
+
+    <!-- ==================== JAVASCRIPT ==================== -->
+    <script>
+        // 1. STICKY HEADER CHANGE COLOR ON SCROLL
+        window.addEventListener('scroll', () => {
+            const header = id = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // 2. TOGGLE HAMBURGER MENU (MOBILE RESPONSIVE)
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // 3. INTERACTIVE SHOWROOM (CHANGE CAR COLOR)
+        function changeColor(color, imgSrc) {
+            const carImg = document.getElementById('carImage');
+            carImg.style.opacity = 0;
+            setTimeout(() => {
+                carImg.src = imgSrc;
+                carImg.style.opacity = 1;
+            }, 300);
+
+            document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // 4. INTERACTIVE TABS (SPECS)
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById('tab-' + tabId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // 5. SCROLL REVEAL ANIMATION (INTERSECTION OBSERVER API)
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // 6. POPUP PROMO MODAL AFTER 10 SECONDS
+        setTimeout(() => {
+            document.getElementById('promoModal').style.display = 'flex';
+        }, 10000);
+
+        function closeModal() {
+            document.getElementById('promoModal').style.display = 'none';
+        }
+
+        // 7. ZALO SHAKE ANIMATION EVERY 5 SECONDS
+        setInterval(() => {
+            const zaloBtn = document.getElementById('zaloBtn');
+            zaloBtn.classList.add('shake');
+            setTimeout(() => zaloBtn.classList.remove('shake'), 500);
+        }, 5000);
+
+        // 8. MULTI-LANGUAGE (i18n) USING JS OBJECT
+        const i18nData = {
+            vi: {
+                nav_about: "Giới thiệu",
+                nav_showroom: "Showroom",
+                nav_specs: "Thông số",
+                hero_title: "Tương Lai Di Chuyển Thượng Lưu",
+                hero_desc: "Trải nghiệm đỉnh cao công nghệ xe điện thông minh cùng thiết kế sang trọng bậc nhất từ VinFast.",
+                hero_btn: "Khám phá ngay",
+                about_title: "Công Nghệ Xanh Tương Lai",
+                about_desc: "VinFast tiên phong ứng dụng công nghệ pin xanh hiện đại, mang lại phạm vi di chuyển vượt trội và khả năng tự lái thông minh. Từng chi tiết được chế tác tỉ mỉ nhằm đem đến trải nghiệm sang trọng và an toàn tuyệt đối.",
+                showroom_title: "Bộ Sưu Tập Màu Sắc",
+                specs_title: "Thông Số Kỹ Thuật",
+                tab_std: "Tiêu Chuẩn",
+                tab_adv: "Nâng Cao",
+                tab_lux: "Cao Cấp (Luxury)",
+                spec_range: "Quãng đường:",
+                spec_accel: "Tăng tốc (0-100km/h):",
+                spec_power: "Công suất:",
+                footer_about: "Thương hiệu xe điện cao cấp, tiên phong dẫn dắt làn sóng di chuyển xanh toàn cầu.",
+                footer_links: "Liên Kết Nhanh",
+                footer_social: "Mạng Xã Hội",
+                modal_title: "ƯU ĐÃI ĐẶC BIỆT!",
+                modal_desc: "Nhận ngay voucher giảm giá 10% cho gói đăng ký lái thử hôm nay.",
+                modal_btn: "Nhận Mã Khuyến Mãi"
+            },
+            en: {
+                nav_about: "About Us",
+                nav_showroom: "Showroom",
+                nav_specs: "Specifications",
+                hero_title: "The Future of Luxury Mobility",
+                hero_desc: "Experience peak smart electric vehicle technology paired with top-tier luxury design by VinFast.",
+                hero_btn: "Explore Now",
+                about_title: "Next-Gen Green Tech",
+                about_desc: "VinFast pioneers modern green battery technology, offering exceptional driving range and smart self-driving capabilities. Crafted meticulously for luxury and absolute safety.",
+                showroom_title: "Color Collection",
+                specs_title: "Technical Specifications",
+                tab_std: "Standard",
+                tab_adv: "Advanced",
+                tab_lux: "Luxury",
+                spec_range: "Range:",
+                spec_accel: "Acceleration (0-100km/h):",
+                spec_power: "Power output:",
+                footer_about: "Luxury EV brand pioneering global green mobility transition.",
+                footer_links: "Quick Links",
+                footer_social: "Social Media",
+                modal_title: "SPECIAL OFFER!",
+                modal_desc: "Get a 10% discount voucher for test drive registration today.",
+                modal_btn: "Claim Offer"
+            }
+        };
+
+        let currentLang = 'vi';
+        function toggleLanguage() {
+            currentLang = currentLang === 'vi' ? 'en' : 'vi';
+            document.getElementById('langBtn').innerText = currentLang === 'vi' ? 'EN' : 'VI';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (i18nData[currentLang][key]) {
+                    el.innerText = i18nData[currentLang][key];
+                }
+            });
+        }
+    </script>
+</body>
+</html>
