@@ -1,0 +1,3 @@
+let usd = parseFloat(prompt("Nhập số lượng USD:"));
+let vnd = usd * 25000;
+console.log("Số tiền tương ứng: " + vnd + " VNĐ");

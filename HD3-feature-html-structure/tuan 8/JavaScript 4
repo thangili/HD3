@@ -1,0 +1,12 @@
+// Tạo 2 biến cố định
+const savedUser = "admin";
+const savedPass = "password123";
+
+let inputUser = prompt("Nhập username:");
+let inputPass = prompt("Nhập password:");
+
+if (inputUser === savedUser && inputPass === savedPass) {
+  console.log("Đăng nhập thành công");
+} else {
+  console.log("Thông tin không chính xác");
+}

@@ -1,0 +1,4 @@
+let height = parseFloat(prompt("Nhập chiều cao (m):"));
+let weight = parseFloat(prompt("Nhập cân nặng (kg):"));
+let bmi = weight / (height * height);
+console.log("Chỉ số BMI của bạn là: " + bmi);

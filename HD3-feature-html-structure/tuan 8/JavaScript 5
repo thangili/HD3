@@ -1,0 +1,7 @@
+let amount = parseFloat(prompt("Nhập số tiền hóa đơn:"));
+
+if (amount > 500000) {
+  amount = amount * 0.9; // Giảm 10%
+}
+
+console.log("Số tiền cuối cùng phải trả: " + amount);
